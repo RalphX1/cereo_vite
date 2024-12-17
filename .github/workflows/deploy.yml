@@ -20,14 +20,16 @@ jobs:
       run: |
         npm install
         npm run build
-    
+        
+    - name: 📂 List build output
+      run: ls -la dist/
+
     - name: 📂 Deploy via SFTP
-      uses: wlixcc/SFTP-Deploy-Action@v1.2.4
+      uses: nogsantos/scp-deploy@master
       with:
-        server: lx5.hoststar.hosting
-        username: admin.zelemu.com
-        password: ${{ secrets.FTP_PASSWORD }}
+        src: ./dist/*
+        host: lx5.hoststar.hosting
         port: 5544
-        local_path: './dist/'
-        remote_path: 'cereo.ai/public_html'
-        sftp_only: true
+        user: admin.zelemu.com
+        password: ${{ secrets.FTP_PASSWORD }}
+        remote: cereo.ai/public_html/
