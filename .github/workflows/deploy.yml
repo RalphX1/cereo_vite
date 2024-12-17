@@ -21,15 +21,13 @@ jobs:
         npm install
         npm run build
         
-    - name: 📂 List build output
-      run: ls -la dist/
-
-    - name: 📂 Deploy via SFTP
-      uses: nogsantos/scp-deploy@master
+    - name: 📂 Deploy with SFTP
+      uses: Creepios/sftp-action@v1.0.3
       with:
-        src: ./dist/*
         host: lx5.hoststar.hosting
         port: 5544
-        user: admin.zelemu.com
+        username: admin.zelemu.com
         password: ${{ secrets.FTP_PASSWORD }}
-        remote: cereo.ai/public_html/
+        localPath: './dist/'
+        remotePath: './cereo.ai/public_html/'
+        forceUpload: true
