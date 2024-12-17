@@ -29,5 +29,6 @@ jobs:
         password: ${{ secrets.FTP_PASSWORD }}
         port: 5544
         local_path: './dist/*'
-        remote_path: './cereo.ai/public_html/'
+        remote_path: '/cereo.ai/public_html/'
         sftp_only: true
+        sftpArgs: '-o ConnectTimeout=5'
