@@ -2,7 +2,6 @@ name: Deploy Website
 on:
   push:
     branches: [ main ]
-
 jobs:
   web-deploy:
     name: 🎉 Deploy
@@ -24,10 +23,10 @@ jobs:
     - name: 📂 Deploy with SFTP
       uses: Creepios/sftp-action@v1.0.3
       with:
-        host: lx5.hoststar.hosting
-        port: 5544
-        username: admin.zelemu.com
+        host: ${{ secrets.FTP_HOST }}
+        port: ${{ secrets.FTP_PORT }}
+        username: ${{ secrets.FTP_USERNAME }}
         password: ${{ secrets.FTP_PASSWORD }}
         localPath: './dist/'
-        remotePath: './cereo.ai/public_html/'
+        remotePath: ${{ secrets.FTP_REMOTE_PATH }}
         forceUpload: true
