@@ -24,11 +24,10 @@ jobs:
     - name: 📂 Sync files
       uses: SamKirkland/FTP-Deploy-Action@v4.3.4
       with:
-        server: "h5.hoststar.hosting"
-        username: "admin.zelemu.com"
+        server: lx5.hoststar.hosting
+        username: admin.zelemu.com
         password: ${{ secrets.FTP_PASSWORD }}
         port: 5544
-        local-dir: "./dist/"
-        server-dir: "./cereo.ai/public_html/"
+        local-dir: ./dist/
+        server-dir: ./cereo.ai/public_html/
         protocol: ftp
-        security: loose
