@@ -1,4 +1,4 @@
-name: Deploy to FTP
+name: Deploy Website
 on:
   push:
     branches: [ main ]
@@ -21,13 +21,13 @@ jobs:
         npm install
         npm run build
     
-    - name: 📂 Sync files
-      uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+    - name: 📂 Deploy via SFTP
+      uses: wlixcc/SFTP-Deploy-Action@v1.2.4
       with:
         server: lx5.hoststar.hosting
         username: admin.zelemu.com
         password: ${{ secrets.FTP_PASSWORD }}
         port: 5544
-        local-dir: ./dist/
-        server-dir: ./cereo.ai/public_html/
-        protocol: ftp
+        local_path: './dist/*'
+        remote_path: './cereo.ai/public_html/'
+        sftp_only: true
