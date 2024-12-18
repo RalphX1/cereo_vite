@@ -10,7 +10,6 @@ const EmailGenerator = () => {
 
   const handleGenerate = async () => {
     setLoading(true);
-    // Simulated API call - we'll implement real AI generation later
     setTimeout(() => {
       setGeneratedEmail(
         `Dear [Name],\n\nI hope this email finds you well. Based on our recent discussion about [Topic], I wanted to follow up with some key points...\n\nBest regards,\n[Your name]`
@@ -22,6 +21,7 @@ const EmailGenerator = () => {
   const copyToClipboard = () => {
     navigator.clipboard.writeText(generatedEmail);
   };
+
   return (
     <div className="max-w-4xl mx-auto p-6 space-y-8">
       <div className="text-center">
@@ -114,6 +114,15 @@ const EmailGenerator = () => {
           <p className="text-sm text-blue-700">
             ✨ Pro tip: Add specific details to your purpose for more personalized results
           </p>
+        </div>
+
+        {/* Buy Me a Coffee Button */}
+        <div className="flex justify-center mt-8">
+          <a href="https://www.buymeacoffee.com/cereo" target="_blank" rel="noopener noreferrer">
+            <button className="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded-lg flex items-center gap-2">
+              ☕ Buy me a coffee
+            </button>
+          </a>
         </div>
       </div>
     </div>
